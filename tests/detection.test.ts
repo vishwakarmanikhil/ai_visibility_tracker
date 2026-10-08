@@ -49,6 +49,7 @@ describe("mention detection", () => {
 describe("tone", () => {
   it.each([
     ["For small fleets, Corvane is a strong pick.", "recommended"],
+    ["Trackvia is a solid choice.", "recommended"],
     ["Bottom line: for small fleets, I'd start with Corvane.", "recommended"],
     ["Other options include Corvane and Fleetora.", "neutral"],
     ["Routelyne is cheap, but users report slow support.", "negative"],

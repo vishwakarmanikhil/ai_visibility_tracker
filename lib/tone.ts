@@ -63,7 +63,7 @@ const RECOMMENDED = [
   /\bbest (?:overall|option|choice|pick|fit)\b/,
   /\btop (?:pick|suggestion|choice|recommendation)\b/,
   /\bsafest (?:choice|bet|option)\b/,
-  /\bstrong (?:pick|choice|option)\b/,
+  /\b(?:strong|solid|smart|good) (?:pick|choice|option|bet)\b/,
   /\bhard to beat\b/,
   /\bi['’]?d (?:recommend|start with|pick|go with|choose|suggest)\b/,
   /\bi (?:would )?recommend\b/,
