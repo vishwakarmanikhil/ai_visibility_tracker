@@ -79,11 +79,12 @@ function checkHq(sentence: string, facts: BrandFacts): FactViolation | null {
   // Case-sensitive on purpose: the place is the run of Capitalised words after the keyword.
   const m = sentence.match(/\b(?:[Bb]ased (?:out of|in)|[Hh]eadquartered in|[Hh]eadquarters (?:is |are )?in|HQ (?:is )?in|[Ll]ocated in)\s+((?:[A-Z][\w.'-]*)(?:\s[A-Z][\w.'-]*)*(?:,\s?[A-Z][\w.'-]*(?:\s[A-Z][\w.'-]*)*)?)/);
   if (!m) return null;
-  const claimed = splitPlace(m[1]);
+  const place = m[1].replace(/[.,]+$/, "");
+  const claimed = splitPlace(place);
   const truth = splitPlace(facts.hq);
   const wrongCity = claimed.city && truth.city && claimed.city !== truth.city;
   const wrongState = claimed.state && truth.state && claimed.state !== truth.state;
-  if (wrongCity || wrongState) return { factKey: "hq", claimed: m[1], expected: facts.hq };
+  if (wrongCity || wrongState) return { factKey: "hq", claimed: place, expected: facts.hq };
   return null;
 }
 
