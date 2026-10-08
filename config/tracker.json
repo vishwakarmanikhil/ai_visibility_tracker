@@ -1,0 +1,36 @@
+{
+  "_help": "Everything company-specific lives here or in the data pack. Change 'client' to view the market from a competitor's side; add a brand to brands.json (and facts.json) to track it.",
+  "dataDir": "corvane_data_pack",
+  "client": "corvane",
+  "brands": {
+    "corvane": {
+      "extraAliases": [
+        "Corvane"
+      ],
+      "notThisBrandWhenFollowedBy": [
+        "Logistics"
+      ]
+    }
+  },
+  "toneCredit": {
+    "recommended": 100,
+    "neutral": 50,
+    "negative": 25,
+    "not_recommended": 0
+  },
+  "knownIntegrations": [
+    "QuickBooks",
+    "Xero",
+    "Sage",
+    "NetSuite",
+    "Salesforce",
+    "SAP",
+    "Oracle",
+    "WEX",
+    "Comdata",
+    "Fleetcor",
+    "HubSpot",
+    "ServiceTitan",
+    "Jobber"
+  ]
+}

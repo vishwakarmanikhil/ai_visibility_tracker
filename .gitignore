@@ -1,0 +1,9 @@
+node_modules/
+.next/
+out/
+output/
+*.tsbuildinfo
+next-env.d.ts
+.env*
+# The brief itself is not ours to publish
+AI-Native_Developer_Case_Study_Corvane_Fleet.pdf
