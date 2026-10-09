@@ -10,7 +10,8 @@
     "export": "tsx scripts/export.ts",
     "accuracy-sample": "tsx scripts/sample.ts",
     "test": "vitest run",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "worksheet": "tsx scripts/worksheet.ts"
   },
   "dependencies": {
     "next": "15.3.3",
