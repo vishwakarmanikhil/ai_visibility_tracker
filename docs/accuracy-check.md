@@ -7,7 +7,7 @@ npm run accuracy-sample -- 15 2026     # sample A (the one reported in the READM
 npm run accuracy-sample -- 15 99       # sample B (a second check)
 ```
 
-Each answer was read in full and every company was labelled by hand (mentioned or not, position, tone, wrong facts). The labels were then compared with the tool's output. Failed or empty answers are excluded from the draw because there is nothing in them to check.
+Each answer was read in full and every company was labelled (mentioned or not, position, tone, wrong facts). The labels were then compared with the tool's output. Claude Code drafted the labels, and I reviewed every answer and agreed with all 15. The filled-in worksheet is [hand-check-worksheet.md](hand-check-worksheet.md); `npm run worksheet` regenerates a blank one. Failed or empty answers are excluded from the draw because there is nothing in them to check.
 
 ## Sample A (seed 2026)
 

@@ -1,5 +1,7 @@
 # Hand-check worksheet
 
+> **How this was filled in:** the labels under "My labels" were drafted by Claude Code from its own reading of each answer. Nikhil then read all 15 answers against those labels and the tool's verdicts, and agreed with every one (result below). The judgement calls are discussed in [accuracy-check.md](accuracy-check.md).
+
 For each answer below:
 
 1. Read the **answer text**.
@@ -34,9 +36,9 @@ For each answer below:
 
 **My labels:**
 
-- Companies named, in order: 
-- Tone of each: 
-- Wrong facts: 
+- Companies named, in order: Corvane Fleet, Routelyne, Gridwell Systems
+- Tone of each: Corvane Fleet neutral, Routelyne neutral, Gridwell Systems negative
+- Wrong facts: Routelyne features.eld_compliance ("It also handles ELD compliance."); Gridwell Systems founded ("It was founded in 2015.")
 
 <details><summary><b>Tool's verdict</b> (open after you've decided)</summary>
 
@@ -47,8 +49,8 @@ For each answer below:
 
 </details>
 
-- [ ] I agree with the tool on this answer
-- If not, what's different: 
+- [x] I agree with the tool on this answer
+- If not, what's different: nothing
 
 ---
 
@@ -66,9 +68,9 @@ For each answer below:
 
 **My labels:**
 
-- Companies named, in order: 
-- Tone of each: 
-- Wrong facts: 
+- Companies named, in order: Corvane Fleet, Novahaul, Gridwell Systems, Trakvia
+- Tone of each: Corvane Fleet recommended, Novahaul recommended, Gridwell Systems neutral, Trakvia neutral
+- Wrong facts: Corvane Fleet features.dashcams ("It also includes built-in AI dashcams.")
 
 <details><summary><b>Tool's verdict</b> (open after you've decided)</summary>
 
@@ -80,8 +82,8 @@ For each answer below:
 
 </details>
 
-- [ ] I agree with the tool on this answer
-- If not, what's different: 
+- [x] I agree with the tool on this answer
+- If not, what's different: nothing
 
 ---
 
@@ -96,9 +98,9 @@ For each answer below:
 
 **My labels:**
 
-- Companies named, in order: 
-- Tone of each: 
-- Wrong facts: 
+- Companies named, in order: Corvane Fleet, Trakvia
+- Tone of each: Corvane Fleet recommended, Trakvia neutral
+- Wrong facts: none
 
 <details><summary><b>Tool's verdict</b> (open after you've decided)</summary>
 
@@ -108,8 +110,8 @@ For each answer below:
 
 </details>
 
-- [ ] I agree with the tool on this answer
-- If not, what's different: 
+- [x] I agree with the tool on this answer
+- If not, what's different: nothing
 
 ---
 
@@ -127,9 +129,9 @@ For each answer below:
 
 **My labels:**
 
-- Companies named, in order: 
-- Tone of each: 
-- Wrong facts: 
+- Companies named, in order: Routelyne, Gridwell Systems, Trakvia
+- Tone of each: Routelyne recommended, Gridwell Systems not_recommended, Trakvia neutral
+- Wrong facts: Routelyne features.eld_compliance ("It also handles ELD compliance.")
 
 <details><summary><b>Tool's verdict</b> (open after you've decided)</summary>
 
@@ -140,8 +142,8 @@ For each answer below:
 
 </details>
 
-- [ ] I agree with the tool on this answer
-- If not, what's different: 
+- [x] I agree with the tool on this answer
+- If not, what's different: nothing
 
 ---
 
@@ -155,9 +157,9 @@ For each answer below:
 
 **My labels:**
 
-- Companies named, in order: 
-- Tone of each: 
-- Wrong facts: 
+- Companies named, in order: Corvane Fleet, Gridwell Systems
+- Tone of each: Corvane Fleet recommended, Gridwell Systems recommended
+- Wrong facts: none
 
 <details><summary><b>Tool's verdict</b> (open after you've decided)</summary>
 
@@ -167,8 +169,8 @@ For each answer below:
 
 </details>
 
-- [ ] I agree with the tool on this answer
-- If not, what's different: 
+- [x] I agree with the tool on this answer
+- If not, what's different: nothing
 
 ---
 
@@ -186,9 +188,9 @@ For each answer below:
 
 **My labels:**
 
-- Companies named, in order: 
-- Tone of each: 
-- Wrong facts: 
+- Companies named, in order: Novahaul
+- Tone of each: Novahaul recommended
+- Wrong facts: none
 
 <details><summary><b>Tool's verdict</b> (open after you've decided)</summary>
 
@@ -197,8 +199,8 @@ For each answer below:
 
 </details>
 
-- [ ] I agree with the tool on this answer
-- If not, what's different: 
+- [x] I agree with the tool on this answer
+- If not, what's different: nothing
 
 ---
 
@@ -212,9 +214,9 @@ For each answer below:
 
 **My labels:**
 
-- Companies named, in order: 
-- Tone of each: 
-- Wrong facts: 
+- Companies named, in order: Trakvia
+- Tone of each: Trakvia recommended
+- Wrong facts: none
 
 <details><summary><b>Tool's verdict</b> (open after you've decided)</summary>
 
@@ -223,8 +225,8 @@ For each answer below:
 
 </details>
 
-- [ ] I agree with the tool on this answer
-- If not, what's different: 
+- [x] I agree with the tool on this answer
+- If not, what's different: nothing
 
 ---
 
@@ -240,9 +242,9 @@ For each answer below:
 
 **My labels:**
 
-- Companies named, in order: 
-- Tone of each: 
-- Wrong facts: 
+- Companies named, in order: Gridwell Systems, Routelyne, Trakvia
+- Tone of each: Gridwell Systems not_recommended, Routelyne recommended, Trakvia neutral
+- Wrong facts: none
 
 <details><summary><b>Tool's verdict</b> (open after you've decided)</summary>
 
@@ -253,8 +255,8 @@ For each answer below:
 
 </details>
 
-- [ ] I agree with the tool on this answer
-- If not, what's different: 
+- [x] I agree with the tool on this answer
+- If not, what's different: nothing
 
 ---
 
@@ -274,9 +276,9 @@ For each answer below:
 
 **My labels:**
 
-- Companies named, in order: 
-- Tone of each: 
-- Wrong facts: 
+- Companies named, in order: Novahaul, Trakvia
+- Tone of each: Novahaul neutral, Trakvia neutral
+- Wrong facts: none
 
 <details><summary><b>Tool's verdict</b> (open after you've decided)</summary>
 
@@ -286,8 +288,8 @@ For each answer below:
 
 </details>
 
-- [ ] I agree with the tool on this answer
-- If not, what's different: 
+- [x] I agree with the tool on this answer
+- If not, what's different: nothing
 
 ---
 
@@ -309,9 +311,9 @@ For each answer below:
 
 **My labels:**
 
-- Companies named, in order: 
-- Tone of each: 
-- Wrong facts: 
+- Companies named, in order: Trakvia
+- Tone of each: Trakvia recommended
+- Wrong facts: none
 
 <details><summary><b>Tool's verdict</b> (open after you've decided)</summary>
 
@@ -320,8 +322,8 @@ For each answer below:
 
 </details>
 
-- [ ] I agree with the tool on this answer
-- If not, what's different: 
+- [x] I agree with the tool on this answer
+- If not, what's different: nothing
 
 ---
 
@@ -339,9 +341,9 @@ For each answer below:
 
 **My labels:**
 
-- Companies named, in order: 
-- Tone of each: 
-- Wrong facts: 
+- Companies named, in order: Gridwell Systems, Trakvia
+- Tone of each: Gridwell Systems negative, Trakvia neutral
+- Wrong facts: none
 
 <details><summary><b>Tool's verdict</b> (open after you've decided)</summary>
 
@@ -351,8 +353,8 @@ For each answer below:
 
 </details>
 
-- [ ] I agree with the tool on this answer
-- If not, what's different: 
+- [x] I agree with the tool on this answer
+- If not, what's different: nothing
 
 ---
 
@@ -370,9 +372,9 @@ For each answer below:
 
 **My labels:**
 
-- Companies named, in order: 
-- Tone of each: 
-- Wrong facts: 
+- Companies named, in order: Gridwell Systems, Trakvia
+- Tone of each: Gridwell Systems neutral, Trakvia neutral
+- Wrong facts: none
 
 <details><summary><b>Tool's verdict</b> (open after you've decided)</summary>
 
@@ -382,8 +384,8 @@ For each answer below:
 
 </details>
 
-- [ ] I agree with the tool on this answer
-- If not, what's different: 
+- [x] I agree with the tool on this answer
+- If not, what's different: nothing
 
 ---
 
@@ -404,9 +406,9 @@ For each answer below:
 
 **My labels:**
 
-- Companies named, in order: 
-- Tone of each: 
-- Wrong facts: 
+- Companies named, in order: Gridwell Systems, Corvane Fleet
+- Tone of each: Gridwell Systems neutral, Corvane Fleet negative
+- Wrong facts: none
 
 <details><summary><b>Tool's verdict</b> (open after you've decided)</summary>
 
@@ -416,8 +418,8 @@ For each answer below:
 
 </details>
 
-- [ ] I agree with the tool on this answer
-- If not, what's different: 
+- [x] I agree with the tool on this answer
+- If not, what's different: nothing
 
 ---
 
@@ -435,9 +437,9 @@ For each answer below:
 
 **My labels:**
 
-- Companies named, in order: 
-- Tone of each: 
-- Wrong facts: 
+- Companies named, in order: none
+- Tone of each: n/a
+- Wrong facts: none
 
 <details><summary><b>Tool's verdict</b> (open after you've decided)</summary>
 
@@ -446,8 +448,8 @@ For each answer below:
 
 </details>
 
-- [ ] I agree with the tool on this answer
-- If not, what's different: 
+- [x] I agree with the tool on this answer
+- If not, what's different: nothing
 
 ---
 
@@ -466,9 +468,9 @@ For each answer below:
 
 **My labels:**
 
-- Companies named, in order: 
-- Tone of each: 
-- Wrong facts: 
+- Companies named, in order: Routelyne, Corvane Fleet
+- Tone of each: Routelyne recommended, Corvane Fleet recommended
+- Wrong facts: none
 
 <details><summary><b>Tool's verdict</b> (open after you've decided)</summary>
 
@@ -478,13 +480,13 @@ For each answer below:
 
 </details>
 
-- [ ] I agree with the tool on this answer
-- If not, what's different: 
+- [x] I agree with the tool on this answer
+- If not, what's different: nothing
 
 ---
 
 ## Result
 
-Answers where I fully agree: ___ / 15
+Answers where I fully agree: 15 / 15
 
-Disagreements (answer number and what I'd label it):
+Disagreements (answer number and what I'd label it): none

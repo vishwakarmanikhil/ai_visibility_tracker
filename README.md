@@ -191,6 +191,7 @@ I built this with **Claude Code**. It:
 - clustered answer sentences into templates so the rules were based on evidence
 - wrote most of the code and tests
 - ran consistency checks (every wrong-claim sentence vs the tool's output, every tone pattern reviewed)
+- drafted the hand-check labels for the 15-answer accuracy sample, which I then reviewed against each answer ([worksheet](docs/hand-check-worksheet.md))
 
 What it got wrong and had to be fixed:
 
