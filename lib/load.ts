@@ -1,5 +1,3 @@
-import fs from "node:fs";
-import path from "node:path";
 import type { DataIssue, LoadResult, ResponseRecord } from "./types";
 import { normalizePromptId } from "./config";
 import { decodeEntities } from "./text";
@@ -123,27 +121,6 @@ export function parseResponses(content: string, sourceFile: string): { records: 
     else badLines++;
   }
   return { records, badLines, formats };
-}
-
-/**
- * Load every *.jsonl / responses*.json file in the data folder, so a new week can be
- * dropped in as a new file. Duplicates (same id, or same week/engine/prompt/run) keep the first copy.
- */
-export function loadResponses(dataDir: string): LoadResult {
-  const files = fs
-    .readdirSync(dataDir)
-    .filter((f) => f.endsWith(".jsonl") || /^responses.*\.json$/.test(f))
-    .sort();
-  const issues: DataIssue[] = [];
-  const all: ResponseRecord[] = [];
-  const formats = new Set<string>();
-  for (const f of files) {
-    const parsed = parseResponses(fs.readFileSync(path.join(dataDir, f), "utf8"), f);
-    all.push(...parsed.records);
-    parsed.formats.forEach((x) => formats.add(x));
-    if (parsed.badLines) issues.push({ kind: "unreadable_rows", detail: `${f}: rows that could not be read`, count: parsed.badLines });
-  }
-  return dedupe(all, issues, formats);
 }
 
 export function dedupe(all: ResponseRecord[], issues: DataIssue[] = [], formats = new Set<string>()): LoadResult {

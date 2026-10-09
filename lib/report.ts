@@ -1,4 +1,4 @@
-import type { Analysis } from "./index";
+import type { Analysis } from "./dataset";
 import { toCsv } from "./csv";
 import { buildModel, compare, subsetScore } from "./score";
 import { engineLabel, stageLabel } from "./insights";

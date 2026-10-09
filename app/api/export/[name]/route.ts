@@ -1,4 +1,4 @@
-import { getAnalysis } from "@/lib";
+import { getAnalysis, serverHasData } from "@/lib";
 import { mentionsCsv, wrongFactsCsv } from "@/lib/exports";
 import { boardReportCsv } from "@/lib/report";
 
@@ -6,6 +6,7 @@ export const dynamic = "force-dynamic";
 
 export async function GET(_req: Request, { params }: { params: Promise<{ name: string }> }) {
   const { name } = await params;
+  if (!serverHasData()) return new Response("No data on the server. Load the data pack in the app; downloads are then built in your browser.", { status: 404 });
   const analysis = getAnalysis();
   const files: Record<string, () => string> = {
     "mentions.csv": () => mentionsCsv(analysis.responses),

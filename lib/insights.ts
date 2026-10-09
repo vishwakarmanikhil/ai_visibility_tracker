@@ -1,4 +1,4 @@
-import type { Analysis } from "./index";
+import type { Analysis } from "./dataset";
 import type { Brand, Prompt, WrongFact } from "./types";
 import { buildModel, compare, displacements, drivers, headToHead, subsetScore, type Comparison, type Model } from "./score";
 import { sourceStats } from "./sources";

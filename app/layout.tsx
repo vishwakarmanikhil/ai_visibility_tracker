@@ -1,11 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import "./globals.css";
+import DownloadLink from "./DownloadLink";
+import { serverHasData } from "@/lib";
 
 export const metadata: Metadata = {
   title: "AI Visibility Tracker",
   description: "How AI assistants talk about Corvane Fleet and its competitors",
 };
+
+export const dynamic = "force-dynamic";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -22,7 +26,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Link href="/method">How it works</Link>
           </nav>
           <span className="spacer" />
-          <a className="small" href="/api/export/board_report.csv">Board report (CSV)</a>
+          <DownloadLink className="small" name="board_report.csv" browser={!serverHasData()}>
+            Board report (CSV)
+          </DownloadLink>
         </header>
         <main>{children}</main>
       </body>

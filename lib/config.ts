@@ -1,5 +1,3 @@
-import fs from "node:fs";
-import path from "node:path";
 import type { Brand, BrandFacts, BrandRole, Config, Prompt, Tone } from "./types";
 import { parseCsv } from "./csv";
 
@@ -8,7 +6,7 @@ interface RawBrand {
   website: string;
 }
 
-interface TrackerFile {
+export interface TrackerFile {
   dataDir?: string;
   client?: string;
   brands?: Record<string, { extraAliases?: string[]; notThisBrandWhenFollowedBy?: string[] }>;
@@ -70,25 +68,22 @@ export function normalizePromptId(raw: unknown): string {
   return m ? `P${m[1].padStart(2, "0")}` : s;
 }
 
-export function loadConfig(rootDir = process.cwd(), clientOverride?: string): Config {
-  const trackerPath = path.join(rootDir, "config", "tracker.json");
-  const tracker: TrackerFile = fs.existsSync(trackerPath)
-    ? JSON.parse(fs.readFileSync(trackerPath, "utf8"))
-    : {};
-  const dataDir = path.resolve(rootDir, process.env.DATA_DIR ?? tracker.dataDir ?? "data");
-  if (!fs.existsSync(path.join(dataDir, "brands.json")))
-    throw new Error(
-      `Data pack not found in ${dataDir}. Unzip the data pack there (it needs brands.json, facts.json, prompts.csv and the responses .jsonl files), or set DATA_DIR. See README "Run it".`,
-    );
-  const brandsJson = JSON.parse(fs.readFileSync(path.join(dataDir, "brands.json"), "utf8"));
-  const factsPath = path.join(dataDir, "facts.json");
-  const factsRaw = fs.existsSync(factsPath) ? JSON.parse(fs.readFileSync(factsPath, "utf8")) : {};
+export interface DataPackContents {
+  brandsJson: string;
+  factsJson?: string;
+  promptsCsv: string;
+}
+
+/** Build the configuration from the tracker settings and the data pack's brand/fact/prompt files. Pure: no file access. */
+export function buildConfig(tracker: TrackerFile, pack: DataPackContents, dataDir: string, clientOverride?: string): Config {
+  const brandsJson = JSON.parse(pack.brandsJson.replace(/^﻿/, ""));
+  const factsRaw = pack.factsJson ? JSON.parse(pack.factsJson.replace(/^﻿/, "")) : {};
   const facts: Record<string, BrandFacts> = {};
   for (const [k, v] of Object.entries(factsRaw)) {
     if (!k.startsWith("_") && v && typeof v === "object") facts[k] = v as BrandFacts;
   }
   const brands = buildBrands(brandsJson, tracker.brands);
-  const prompts = parsePrompts(fs.readFileSync(path.join(dataDir, "prompts.csv"), "utf8"));
+  const prompts = parsePrompts(pack.promptsCsv);
   const requested = clientOverride ?? tracker.client ?? brands.find((b) => b.role === "client")?.key;
   const client = brands.some((b) => b.key === requested) ? requested! : brands[0].key;
   const knownIntegrations = new Set(tracker.knownIntegrations ?? []);

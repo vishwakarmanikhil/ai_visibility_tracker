@@ -9,7 +9,7 @@ A local web app that reads weekly AI answers (ChatGPT, Perplexity, Google AI Ove
 
 Everything runs locally with rules. There are no paid APIs and no AI model at runtime.
 
-Stack: **Next.js 15 / React 19** for the UI, with **Node.js** server components and API routes for the backend, and TypeScript throughout. The analysis engine in `lib/` is plain TypeScript with no framework, so the CLI, the web app and the tests all use the same code.
+Stack: **Next.js 15.5 / React 19.1** for the UI, with **Node.js** server components and API routes for the backend, and TypeScript throughout. The analysis engine in `lib/` is plain TypeScript with no framework, so the CLI, the web app and the tests all use the same code.
 
 ## Run it
 
@@ -42,6 +42,16 @@ npm run app          # builds and serves on http://localhost:3000
 | `npm run accuracy-sample -- 15 2026` | Re-draws the random sample used for the accuracy check |
 
 The same CSVs, plus a board report, can be downloaded in the app (header link and **How it works** page) or from `/api/export/mentions.csv`, `/api/export/wrong_facts.csv` and `/api/export/board_report.csv`.
+
+### Deployed version (no data on the server)
+
+When the server has no data folder (like the public deployment on Vercel), every page shows a **Load the data pack** screen instead. Drop in the data pack ZIP, or its files, and the whole app works:
+
+- The files are read and analysed **in the browser** with the same engine (`lib/dataset.ts`), and nothing is sent to a server.
+- They're remembered in that browser until **Remove data** is clicked.
+- CSV downloads are built in the browser too.
+
+A test checks that loading the ZIP in the browser gives exactly the same `mentions.csv` and `wrong_facts.csv` as reading the data folder.
 
 ### Adding a new week
 
@@ -157,7 +167,8 @@ Companies come from `brands.json` and facts from `facts.json`. Adding a competit
    - board report CSV
    - "view as competitor"
    - configuration instead of code
-5. **Not done:** a deployed version (it runs locally with one command; Vercel would work as is), charts beyond sparklines, a database, and authentication. Lower value than accuracy, and easy to add.
+5. **A deployed version that doesn't publish the data.** The data pack must not be public, so the deployed site ships with no data. Visitors load the data pack ZIP in their browser, and it is analysed there by the same engine. Nothing is uploaded to a server.
+6. **Not done:** charts beyond sparklines, a database, and authentication. These are lower value than accuracy, and easy to add.
 
 ## Accuracy
 
@@ -187,7 +198,7 @@ Full details are in [docs/accuracy-check.md](docs/accuracy-check.md).
 
 ## Tests
 
-`npm test` runs 27 tests:
+`npm test` runs 29 tests:
 
 - name variants, websites, misspellings
 - "a fleet of 30" not becoming Fleetora
@@ -196,6 +207,7 @@ Full details are in [docs/accuracy-check.md](docs/accuracy-check.md).
 - each tone rule and the final-verdict rule
 - each wrong-fact type, true claims not flagged, unverified claims not flagged, claims about Corvane Logistics not pinned on Corvane
 - both file formats, engine, prompt and date normalisation, de-duplication
+- loading the data pack ZIP in the browser gives the same exports as the data folder (skipped if the data folder isn't present)
 
 ## How I used AI tools
 
@@ -241,8 +253,10 @@ My main takeaway: the AI was fast, but every one of these mistakes was caught by
 ## Project layout
 
 ```
-app/                  Next.js pages (Monday view, explore, head-to-head, facts, sources, method) + CSV API route
-lib/                  Analysis engine (load, mentions, tone, facts, score, insights, sources, exports, report)
+app/                  Next.js pages; app/views/ holds each page body as a pure view (rendered on the server, or in the browser
+                      when the data pack is loaded there: ClientData.tsx, browserData.ts) + CSV API route
+lib/                  Analysis engine: pure TypeScript (dataset, load, mentions, tone, facts, score, insights, sources, exports,
+                      report); lib/index.ts is the only part that reads files from disk
 config/tracker.json   Client, aliases, look-alikes, tone points, known integrations
 corvane_data_pack/    Input data (not committed: unzip the data pack here); drop new weekly .jsonl files here
 scripts/              CLI: export, accuracy sample
