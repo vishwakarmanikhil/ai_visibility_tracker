@@ -185,21 +185,30 @@ Full details are in [docs/accuracy-check.md](docs/accuracy-check.md).
 
 ## How I used AI tools
 
-I built this with **Claude Code**. It:
+I used Claude Code for most of this project, and I want to be upfront about how.
 
-- profiled the data and found the format changes, duplicates, missing week-5 Perplexity, timeouts and name variants
-- clustered answer sentences into templates so the rules were based on evidence
-- wrote most of the code and tests
-- ran consistency checks (every wrong-claim sentence vs the tool's output, every tone pattern reviewed)
-- drafted the hand-check labels for the 15-answer accuracy sample, which I then reviewed against each answer ([worksheet](docs/hand-check-worksheet.md))
+I started by asking it to read the brief and the data pack and explain them back to me in simple terms, with a list of steps. That helped me understand the problem before any code was written. I picked the stack (Next.js and React for the front end, Node for the backend) because that's what I'm most comfortable with and what I'd want to keep working in.
 
-What it got wrong and had to be fixed:
+From there, Claude Code did most of the heavy lifting. It dug through the data first and found the messy parts:
+- week 4 uses different field names
+- there are 8 duplicate rows
+- Perplexity is missing from week 5
+- 3 answers timed out
+- company names are spelled lots of different ways
 
-- **The typo matcher was too eager.** "Corvain" needed edit-distance 2, which let "a fleet of 30" match *Fleetora*. That created false mentions and broke "it" attribution, hiding three wrong facts. It was caught by cross-checking all wrong-claim sentences (92 found vs 95 expected). Fuzzy matching is now limited to capitalised words, and there's a test for it.
-- **Two table verdicts were missed** ("Not for small fleets", "Mixed reviews") and defaulted to neutral. Caught by listing every tone-deciding pattern.
-- **The HQ check kept the full stop** ("Columbus, Georgia.") in alert text.
-- **The first noise model only looked at single weeks overall,** where everything was "noise". Looking at the pivot by engine showed the real movement, which led to adding the two-week and per-engine comparisons.
-- A stray shell command hung the session once and had to be killed.
+It then grouped the answers into their repeated sentence patterns, so the tone rules came from what the data actually says rather than guesses. It wrote most of the code and the tests. My part was steering it, asking it to explain things I didn't follow, checking the output and deciding what to prioritise.
+
+For the accuracy check, I had it draft labels for the 15 random answers. I then went through each answer myself and compared it with the labels and the tool's verdict. I agreed with all 15. The filled-in [worksheet](docs/hand-check-worksheet.md) is in the repo.
+
+**What it got wrong along the way:**
+
+- **It was too generous with typos.** To catch "Corvain" as a misspelling of Corvane, it allowed two-letter differences. That also meant ordinary text like "a fleet of 30" was being read as *Fleetora*. Those fake mentions confused which company "it" referred to, and three wrong facts were missed. It showed up when we compared the wrong-fact count against a plain text search (92 found vs 95 expected). The fix was to only allow typo matching on capitalised words, and there's now a test for it.
+- **It missed two table phrases.** "Not for small fleets" and "Mixed reviews" were being treated as neutral. Listing every sentence that decided a tone made the gap obvious.
+- **A small display bug.** The headquarters alert showed "Columbus, Georgia." with the full stop included.
+- **Its first noise check was too blunt.** It only compared whole weeks, so every change came out as "noise" and the dashboard said nothing useful. Breaking the scores down by AI engine showed the real story: Corvane dropping on Google AI Overviews while Routelyne rose. So we added per-engine and two-week comparisons.
+- **Once a command it ran froze** and had to be stopped by hand.
+
+My main takeaway: the AI was fast, but every one of these mistakes was caught by checking its output against the data, not by trusting it. That's the habit I'd keep.
 
 ## Running this every day for 20 clients
 
