@@ -15,6 +15,20 @@ Stack: **Next.js 15 / React 19** for the UI, with **Node.js** server components 
 
 Requires Node 20+.
 
+**1. Add the data pack.** The data pack isn't included in this repository. Unzip it into a folder called `corvane_data_pack/` in the project root, so that it looks like this:
+
+```
+corvane_data_pack/
+  brands.json
+  facts.json
+  prompts.csv
+  responses.jsonl
+```
+
+(To keep it somewhere else, set `dataDir` in `config/tracker.json` or the `DATA_DIR` environment variable.)
+
+**2. Install and run:**
+
 ```bash
 npm install
 npm run app          # builds and serves on http://localhost:3000
@@ -230,7 +244,7 @@ My main takeaway: the AI was fast, but every one of these mistakes was caught by
 app/                  Next.js pages (Monday view, explore, head-to-head, facts, sources, method) + CSV API route
 lib/                  Analysis engine (load, mentions, tone, facts, score, insights, sources, exports, report)
 config/tracker.json   Client, aliases, look-alikes, tone points, known integrations
-corvane_data_pack/    Input data; drop new weekly .jsonl files here
+corvane_data_pack/    Input data (not committed: unzip the data pack here); drop new weekly .jsonl files here
 scripts/              CLI: export, accuracy sample
 tests/                Vitest tests
 docs/                 Accuracy check

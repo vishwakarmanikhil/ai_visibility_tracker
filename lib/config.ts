@@ -76,6 +76,10 @@ export function loadConfig(rootDir = process.cwd(), clientOverride?: string): Co
     ? JSON.parse(fs.readFileSync(trackerPath, "utf8"))
     : {};
   const dataDir = path.resolve(rootDir, process.env.DATA_DIR ?? tracker.dataDir ?? "data");
+  if (!fs.existsSync(path.join(dataDir, "brands.json")))
+    throw new Error(
+      `Data pack not found in ${dataDir}. Unzip the data pack there (it needs brands.json, facts.json, prompts.csv and the responses .jsonl files), or set DATA_DIR. See README "Run it".`,
+    );
   const brandsJson = JSON.parse(fs.readFileSync(path.join(dataDir, "brands.json"), "utf8"));
   const factsPath = path.join(dataDir, "facts.json");
   const factsRaw = fs.existsSync(factsPath) ? JSON.parse(fs.readFileSync(factsPath, "utf8")) : {};

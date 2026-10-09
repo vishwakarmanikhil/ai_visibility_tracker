@@ -7,3 +7,6 @@ next-env.d.ts
 .env*
 # The brief itself is not ours to publish
 AI-Native_Developer_Case_Study_Corvane_Fleet.pdf
+
+# Data pack is provided separately by the reviewers; do not commit it
+corvane_data_pack/
